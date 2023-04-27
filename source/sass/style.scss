@@ -1,7 +1,6 @@
-/* GLOBAL */
-@import "global/variables";
-@import "global/global";
-@import "global/fonts";
-
-/* BLOCKS */
-@import "blocks/header";
+@use "./global/use.scss";
+@use "./global/base.scss";
+@use "./global/mixins.scss";
+@use "./blocks/btn.scss";
+@use "./blocks/header.scss";
+@use "./blocks/main-nav.scss";

@@ -1,99 +1,125 @@
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
-import gulpIf from 'gulp-if';
-import dartSass from "sass";
-import gulpSass from "gulp-sass";
+import sass from 'gulp-dart-sass';
 import postcss from 'gulp-postcss';
-import postUrl from 'postcss-url';
-import autoprefixer from 'autoprefixer';
 import csso from 'postcss-csso';
+import rename from 'gulp-rename';
+import autoprefixer from 'autoprefixer';
+import htmlmin from 'gulp-htmlmin';
 import terser from 'gulp-terser';
 import squoosh from 'gulp-libsquoosh';
 import svgo from 'gulp-svgmin';
-import { stacksvg } from "gulp-stacksvg";
-import { deleteAsync } from 'del';
+import svgstore from 'gulp-svgstore';
+import del from 'del';
 import browser from 'browser-sync';
-import bemlinter from 'gulp-html-bemlinter';
-import { htmlValidator } from "gulp-w3c-html-validator";
 
-const sass = gulpSass(dartSass);
-let isDevelopment = true;
+// Styles
 
-export function processMarkup () {
-  return gulp.src('source/*.html')
-    .pipe(gulp.dest('build'));
-}
-
-export function lintBem () {
-  return gulp.src('source/*.html')
-    .pipe(bemlinter());
-}
-
-export function validateMarkup () {
-  return gulp.src('source/*.html')
-		.pipe(htmlValidator.analyzer())
-		.pipe(htmlValidator.reporter({ throwErrors: true }));
-}
-
-export function processStyles () {
-  return gulp.src('source/sass/*.scss', { sourcemaps: isDevelopment })
+export const styles = () => {
+  return gulp.src('source/sass/style.scss', { sourcemaps: true })
     .pipe(plumber())
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss([
-      postUrl({ assetsPath: '../' }),
       autoprefixer(),
       csso()
     ]))
-    .pipe(gulp.dest('build/css', { sourcemaps: isDevelopment }))
+    .pipe(rename('style.min.css'))
+    .pipe(gulp.dest('build/css', { sourcemaps: '.' }))
     .pipe(browser.stream());
 }
 
-export function processScripts () {
-  return gulp.src('source/js/**/*.js')
+// HTML
+
+const html = () => {
+  return gulp.src('source/*.html')
+    .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(gulp.dest('build'));
+}
+
+// Scripts
+
+const scripts = () => {
+  return gulp.src('source/js/*.js')
     .pipe(terser())
-    .pipe(gulp.dest('build/js'))
-    .pipe(browser.stream());
+    .pipe(gulp.dest('build/js'));
 }
 
-export function optimizeImages () {
-  return gulp.src('source/img/**/*.{png,jpg}')
-    .pipe(gulpIf(!isDevelopment, squoosh()))
-    .pipe(gulp.dest('build/img'))
-}
+// Images
 
-export function createWebp () {
-  return gulp.src('source/img/**/*.{png,jpg}')
-    .pipe(squoosh({
-      webp: {}
-    }))
-    .pipe(gulp.dest('build/img'))
-}
-
-export function optimizeVector () {
-  return gulp.src(['source/img/**/*.svg', '!source/img/icons/**/*.svg'])
-    .pipe(svgo())
+const optimizeImages = () => {
+  return gulp.src('source/img/**/*.{jpg,png}')
+    .pipe(squoosh())
     .pipe(gulp.dest('build/img'));
 }
 
-export function createStack () {
-  return gulp.src('source/img/icons/**/*.svg')
-    .pipe(svgo())
-    .pipe(stacksvg())
-    .pipe(gulp.dest('build/img/icons'));
+const copyImages = () => {
+  return gulp.src('source/img/**/*.{jpg,png}')
+    .pipe(gulp.dest('build/img'));
 }
 
-export function copyAssets () {
-  return gulp.src([
-    'source/fonts/**/*.{woff2,woff}',
+// Webp
+
+const createWebp = () => {
+  return gulp.src('source/img/**/web-*.{jpg,png}')
+    .pipe(squoosh({
+      webp: {}
+    }))
+    .pipe(gulp.dest('build/img'));
+}
+
+// SVG
+
+const svg = () =>
+  gulp.src(['source/img/*.svg', '!source/img/svg/*.svg'])
+    .pipe(svgo())
+    .pipe(gulp.dest('build/img'));
+
+const sprite = () => {
+  return gulp.src('source/img/svg/icon-*.svg')
+    .pipe(svgo())
+    .pipe(svgstore({
+      inlineSvg: true
+    }))
+    .pipe(rename('sprite.svg'))
+    .pipe(gulp.dest('build/img/svg'));
+}
+
+// Copy
+
+const copyImage = (done) => {
+  gulp.src([
+    'source/img/*.{jpg,png,svg}'
+  ], {
+    base: 'source'
+  })
+    .pipe(squoosh())
+    .pipe(gulp.dest('build'));
+
+  done();
+}
+
+const copy = (done) => {
+  gulp.src([
+    'source/fonts/*.{woff2,woff}',
     'source/*.ico',
+    'source/img/svg/*.svg',
     'source/*.webmanifest',
   ], {
     base: 'source'
   })
-    .pipe(gulp.dest('build'));
+    .pipe(gulp.dest('build'))
+  done();
 }
 
-export function startServer (done) {
+// Clean
+
+const clean = () => {
+  return del('build');
+}
+
+// Server
+
+const server = (done) => {
   browser.init({
     server: {
       baseDir: 'build'
@@ -105,47 +131,49 @@ export function startServer (done) {
   done();
 }
 
-function reloadServer (done) {
+//Reload
+
+const reload = (done) => {
   browser.reload();
   done();
 }
 
-function watchFiles () {
-  gulp.watch('source/sass/**/*.scss', gulp.series(processStyles));
-  gulp.watch('source/js/script.js', gulp.series(processScripts));
-  gulp.watch('source/*.html', gulp.series(processMarkup, reloadServer));
+// Watcher
+
+const watcher = () => {
+  gulp.watch('source/sass/**/*.scss', gulp.series(styles));
+  gulp.watch('source/js/*.js', gulp.series(scripts));
+  gulp.watch('source/*.html', gulp.series(html, reload));
+  gulp.watch('source/img/*.{jpg,png,svg}', gulp.series(copyImage, sprite, reload));
 }
 
-function compileProject (done) {
+export const build = gulp.series(
+  clean,
+  copy,
+  optimizeImages,
   gulp.parallel(
-    processMarkup,
-    processStyles,
-    processScripts,
-    optimizeVector,
-    createStack,
-    copyAssets,
-    optimizeImages,
+    styles,
+    html,
+    scripts,
+    svg,
+    sprite,
     createWebp
-  )(done);
-}
+  )
+)
 
-function deleteBuild () {
-  return deleteAsync('build');
-}
-
-export function buildProd (done) {
-  isDevelopment = false;
+export default gulp.series(
+  clean,
+  copy,
+  copyImages,
+  gulp.parallel(
+    styles,
+    html,
+    scripts,
+    svg,
+    sprite,
+    createWebp
+  ),
   gulp.series(
-    deleteBuild,
-    compileProject
-  )(done);
-}
-
-export function runDev (done) {
-  gulp.series(
-    deleteBuild,
-    compileProject,
-    startServer,
-    watchFiles
-  )(done);
-}
+    server,
+    watcher
+  ));
