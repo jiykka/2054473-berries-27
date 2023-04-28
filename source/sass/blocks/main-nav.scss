@@ -6,22 +6,39 @@
 
   @include use.media-mobile-only {
     padding: 8px 87px 8px 26px;
+    height: 52px;
 
-    &--opened .main-nav__toggle {
-      background-image: url("../img/svg/mob-menu-close.svg");
-      width: 28px;
-      height: 28px;
-      top: 5px;
-      right: 14px;
-      margin: 15px;
+    // &--opened .main-nav__toggle {
+    //   background-image: url("../img/svg/mob-menu-close.svg");
+    //   width: 28px;
+    //   height: 28px;
+    //   top: 5px;
+    //   right: 14px;
+    //   margin: 15px;
+    // }
+
+    // &--closed .main-nav__toggle {
+    //   background-image: url("../img/svg/mob-menu-open.svg");
+    //   width: 60px;
+    //   height: 60px;
+    //   right: 21px;
+    //   top: 4px;
+    // }
+
+    &--closed .main-nav__toggle-close {
+      display: none;
     }
 
-    &--closed .main-nav__toggle {
-      background-image: url("../img/svg/mob-menu-open.svg");
-      width: 60px;
-      height: 60px;
-      right: 21px;
-      top: 4px;
+    &--closed .main-nav__toggle-open {
+      display: block;
+    }
+
+    &--opened .main-nav__toggle-open {
+      display: none;
+    }
+
+    &--opened .main-nav__toggle-close {
+      display: block;
     }
 
     &--closed .main-nav__wrapper {
@@ -56,7 +73,7 @@
 }
 
 .main-nav__logo {
-  display: block;
+  display: inline-block;
   position: relative;
   outline: none;
 
@@ -147,23 +164,29 @@
   margin: 0;
   padding: 0;
   z-index: 3;
-  right: 0;
+  top: 4px;
+  right: 21px;
+  // width: 60px;
+  // height: 60px;
+  outline: none;
 
-  &::after {
-    content: "";
-    position: absolute;
-    top: -15px;
-    bottom: -15px;
-    left: -15px;
-    right: -15px;
+  // &::after {
+  //   content: "";
+  //   position: absolute;
+  //   top: -15px;
+  //   bottom: -15px;
+  //   left: -15px;
+  //   right: -15px;
+  // }
+
+  &:hover .main-nav__toggle-open,
+  &:hover .main-nav__toggle-close {
+    color: use.$color-ultragreen;
   }
 
-  &:hover {
-    color: use.$color-aquamarine;
-  }
-
-  &:focus-visible {
-    outline: 1px solid use.$color-black;
+  &:focus-visible .main-nav__toggle-open,
+  &:focus-visible .main-nav__toggle-close {
+    color: use.$color-ultragreen;
   }
 
   &:active {
@@ -173,6 +196,17 @@
   @include use.media-tablet {
     display: none;
   }
+}
+
+.main-nav__toggle-open {
+  color: use.$color-green;
+}
+
+.main-nav__toggle-close {
+  position: relative;
+  right: -9px;
+  top: 1px;
+  color: use.$color-aquamarine;
 }
 
 .main-nav__wrapper {
