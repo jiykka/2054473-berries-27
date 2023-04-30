@@ -1,0 +1,228 @@
+@use "../global/use.scss";
+
+.news {
+  display: block;
+  position: relative;
+  padding: 0 26px;
+
+  @include use.media-mobile-only {
+    padding-bottom: 64px;
+  }
+
+  @include use.media-tablet {
+    padding-bottom: 110px;
+  }
+
+  @include use.media-desktop {
+    padding-bottom: 99px;
+  }
+
+  &::before {
+    content: "";
+    width: 228px;
+    height: 32px;
+    background-image: url("../img/svg/mob-delimiter.svg");
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: -32px;
+    left: 50.5%;
+    transform: translateX(-50%);
+
+    @include use.media-tablet {
+      width: 296px;
+      height: 42px;
+      background-image: url("../img/svg/tab-delimiter.svg");
+      left: 50%;
+      bottom: -43px;
+    }
+  }
+}
+
+.news__title {
+  margin: 0;
+  color: use.$color-green;
+  text-align: center;
+  position: relative;
+
+  @include use.media-mobile-only {
+    @include use.font-comfortaa-36;
+    line-height: 40px;
+    margin-bottom: 63px;
+  }
+
+  @include use.media-tablet {
+    @include use.font-comfortaa-48;
+    line-height: 54px;
+    margin-bottom: 71px;
+    left: -2px;
+  }
+
+  @include use.media-desktop {
+    @include use.font-comfortaa-52;
+    line-height: 58px;
+    margin-bottom: 98px;
+    left: 0;
+  }
+}
+
+.news__blog {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 20px;
+  row-gap: 23.5px;
+  margin: 0;
+  padding: 0;
+
+  @include use.media-tablet {
+    row-gap: 34px;
+  }
+
+  @include use.media-desktop {
+    column-gap: 24px;
+  }
+}
+
+.news__box {
+  display: block;
+  border: 2px solid use.$color-green;
+  border-radius: 40px;
+  padding: 31px 18px 69px;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+
+  @include use.media-mobile-only {
+    max-width: 228px;
+  }
+
+  @include use.media-tablet {
+    padding: 30px 35px 103px 33px;
+    max-width: 276px;
+  }
+
+  @include use.media-desktop {
+    padding: 29px 34px 106px;
+    max-width: 288px;
+  }
+
+  &::before {
+    content: "";
+    width: 76px;
+    height: 32px;
+    background-image: url("../img/svg/mob-branch.svg");
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @include use.media-tablet {
+      width: 96px;
+      height: 40px;
+      background-image: url("../img/svg/tab-branch.svg");
+      bottom: 39px;
+    }
+
+    @include use.media-desktop {
+      bottom: 42px;
+    }
+  }
+
+  &--position {
+    @include use.media-tablet {
+      position: relative;
+      left: -4px;
+    }
+
+    @include use.media-desktop {
+      left: 0;
+    }
+  }
+
+  &:hover,
+  &:focus-visible {
+    border-color: use.$color-ultragreen;
+    outline: none;
+    box-shadow: 0 4px 4px rgba(88, 13, 101, 0.15);
+  }
+
+  &:active {
+    border-color: use.$color-aquamarine;
+    box-shadow: 0 6px 10px rgba(88, 13, 101, 0.15);
+  }
+}
+
+.news__box-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+
+  @include use.media-mobile-only {
+    @include use.font-raleway-20;
+    line-height: 23px;
+    min-height: 68px;
+    margin-bottom: 20px;
+    width: 200px;
+  }
+
+  @include use.media-tablet {
+    @include use.font-raleway-28;
+    line-height: 33px;
+    min-height: 100px;
+    margin-bottom: 25px;
+    width: 276px;
+  }
+
+  @include use.media-desktop {
+    letter-spacing: 0.1px;
+    margin-bottom: 21px;
+    width: 288px;
+  }
+
+  &--position {
+    left: -1px;
+  }
+}
+
+.news__box-text,
+.news__box-date {
+  margin: 0;
+
+  @include use.media-mobile-only {
+    @include use.font-raleway-14;
+    line-height: 16px;
+    letter-spacing: 0.1px;
+  }
+
+  @include use.media-tablet {
+    @include use.font-raleway-16;
+    line-height: 20px;
+  }
+}
+
+.news__box-text {
+  @include use.media-mobile-only {
+    min-height: 180px;
+    margin-bottom: 12px;
+  }
+
+  @include use.media-tablet {
+    min-height: 196px;
+    margin-bottom: 16px;
+    letter-spacing: 0.2px;
+  }
+}
+
+.news__box-date {
+  display: block;
+  text-align: right;
+
+  @include use.media-desktop {
+    position: relative;
+    left: -1px;
+  }
+}

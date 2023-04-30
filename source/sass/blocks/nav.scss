@@ -168,15 +168,6 @@
   right: 21px;
   outline: none;
 
-  // &::after {
-  //   content: "";
-  //   position: absolute;
-  //   top: -15px;
-  //   bottom: -15px;
-  //   left: -15px;
-  //   right: -15px;
-  // }
-
   &:hover .nav__toggle-open,
   &:hover .nav__toggle-close {
     color: use.$color-ultragreen;
@@ -318,7 +309,6 @@
   &:disabled {
     opacity: 0.6;
   }
-
 
   &--first {
     @include use.media-tablet {
