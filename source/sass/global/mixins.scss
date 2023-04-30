@@ -26,12 +26,12 @@
   font-style: normal;
 }
 
-@mixin font-raleway-23 {
-  font-family: "Raleway", "Arial", sans-serif;
-  font-weight: 400;
-  font-size: 23px;
-  font-style: normal;
-}
+// @mixin font-raleway-23 {
+//   font-family: "Raleway", "Arial", sans-serif;
+//   font-weight: 400;
+//   font-size: 23px;
+//   font-style: normal;
+// }
 
 @mixin font-raleway-28 {
   font-family: "Raleway", "Arial", sans-serif;
@@ -41,21 +41,21 @@
 }
 
 @mixin font-comfortaa-36 {
-  font-family: "Raleway", "Arial", sans-serif;
+  font-family: "Comfortaa", "Arial", sans-serif;
   font-weight: 400;
   font-size: 36px;
   font-style: normal;
 }
 
 @mixin font-comfortaa-48 {
-  font-family: "Raleway", "Arial", sans-serif;
+  font-family: "Comfortaa", "Arial", sans-serif;
   font-weight: 400;
   font-size: 48px;
   font-style: normal;
 }
 
 @mixin font-comfortaa-52 {
-  font-family: "Raleway", "Arial", sans-serif;
+  font-family: "Comfortaa", "Arial", sans-serif;
   font-weight: 400;
   font-size: 52px;
   font-style: normal;
@@ -80,7 +80,7 @@
 }
 
 @mixin media-desktop {
-  @media (min-width: 1150px) {
+  @media (min-width: 1440px) {
     @content;
   }
 }

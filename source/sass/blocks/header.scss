@@ -4,13 +4,4 @@
   position: relative;
   box-shadow: 0 4px 4px rgba(88, 13, 101, 0.25);
   background-color: use.$color-lite-aqua;
-
-  @include use.media-mobile-only {
-    margin-bottom: 20px;
-  }
-
-  @include use.media-desktop {
-    position: relative;
-    margin-bottom: 82px;
-  }
 }

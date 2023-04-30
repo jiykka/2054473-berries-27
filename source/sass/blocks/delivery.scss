@@ -1,0 +1,171 @@
+@use "../global/use.scss";
+
+.delivery {
+  display: block;
+  background-position: top 0 left 0;
+  background-repeat: repeat;
+  background-size: cover;
+
+  @include use.media-mobile-only {
+    background-image: url("../img/web-mob-delivery.webp");
+    margin-bottom: 65px;
+
+    @media (min-resolution: 2dppx) {
+      background-image: url("../img/web-mob-delivery@2x.webp");
+    }
+  }
+
+  @include use.media-tablet {
+    background-image: url("../img/web-tab-delivery.webp");
+    margin-bottom: 100px;
+
+    @media (min-resolution: 2dppx) {
+      background-image: url("../img/web-tab-delivery@2x.webp");
+    }
+  }
+
+  @include use.media-desktop {
+    background-image: url("../img/web-desk-delivery.webp");
+    margin-bottom: 102px;
+
+    @media (min-resolution: 2dppx) {
+      background-image: url("../img/web-desk-delivery@2x.webp");
+    }
+  }
+}
+
+.delivery__box {
+  display: block;
+
+  @include use.media-mobile-only {
+    padding: 68px 28px 192px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @include use.media-tablet {
+    padding: 142px 28px 421px 213px;
+  }
+
+  @include use.media-desktop {
+    padding: 172px 28px 249px 539px;
+  }
+}
+
+.delivery__title {
+  margin: 0;
+  color: use.$color-green;
+
+  @include use.media-mobile-only {
+    @include use.font-comfortaa-36;
+    line-height: 40px;
+    margin-bottom: 38px;
+    text-align: center;
+  }
+
+  @include use.media-tablet {
+    @include use.font-comfortaa-48;
+    line-height: 54px;
+    margin-bottom: 50px;
+  }
+
+  @include use.media-desktop {
+    @include use.font-comfortaa-52;
+    line-height: 58px;
+    margin-bottom: 56px;
+  }
+}
+
+.delivery__list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include use.media-mobile-only {
+    row-gap: 19px;
+    margin: 0 auto;
+    margin-bottom: 54px;
+    width: 206px;
+    justify-content: center;
+  }
+
+  @include use.media-tablet {
+    row-gap: 24px;
+    margin-bottom: 54px;
+    width: 526px;
+  }
+
+  @include use.media-desktop {
+    padding-left: 24px;
+    margin-bottom: 58px;
+  }
+}
+
+.delivery__item {
+  display: block;
+  margin: 0;
+  position: relative;
+
+  @include use.media-mobile-only {
+    @include use.font-raleway-16;
+    line-height: 19px;
+    padding-left: 44px;
+    width: 162px;
+  }
+
+  @include use.media-tablet {
+    @include use.font-raleway-18;
+    line-height: 22px;
+    padding-left: 44px;
+    letter-spacing: 0.2px;
+  }
+
+  &--berries::after {
+    content: "";
+    width: 32px;
+    height: 32px;
+    background-image: url("../img/svg/delivery-leaf.svg");
+    background-repeat: no-repeat;
+    position: absolute;
+    top: -6px;
+    left: -1px;
+
+    @include use.media-tablet {
+      top: -4px;
+    }
+  }
+
+  &--snow::after {
+    content: "";
+    width: 32px;
+    height: 32px;
+    background-image: url("../img/svg/delivery-snow.svg");
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 16px;
+    left: -1px;
+
+    @include use.media-tablet {
+      top: 7px;
+    }
+  }
+
+  &--bike::after {
+    content: "";
+    width: 32px;
+    height: 32px;
+    background-image: url("../img/svg/delivery-bike.svg");
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 6px;
+    left: -1px;
+
+    @include use.media-tablet {
+      top: -4px;
+    }
+  }
+}

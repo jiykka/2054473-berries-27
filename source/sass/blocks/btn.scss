@@ -1,26 +1,43 @@
 @use "../global/use.scss";
 
 .btn {
-  @include use.font-raleway-23;
-  line-height: 20px;
+  display: inline-block;
   text-align: center;
-  text-transform: uppercase;
   text-decoration: none;
-  border: 2px solid use.$color-gray;
-  color: use.$color-gray;
-  background-color: use.$color-white;
-  cursor: pointer;
+  border: none;
+  color: use.$color-white;
+  background-color: use.$color-purple;
+  border-radius: 40px;
+  box-shadow: 0 4px 4px rgba(88, 13, 101, 0.25);
   transition: all 0.3s ease-in-out;
-  padding: 14px 78px;
+  cursor: pointer;
+  position: relative;
+
+  @include use.media-mobile-only {
+    @include use.font-raleway-20;
+    line-height: 23.5px;
+    padding: 16px 90px 16px 84px;
+    letter-spacing: 1.3px;
+  }
+
+  @include use.media-tablet {
+    @include use.font-raleway-28;
+    line-height: 33px;
+    padding: 17px 105px 18px 105px;
+    letter-spacing: 1.8px;
+  }
+
+  @include use.media-desktop {
+    left: 37px;
+  }
 
   &:focus,
   &:hover {
-    color: use.$color-white;
-    background: use.$color-gray;
+    background: use.$color-pink;
     outline: none;
   }
 
   &:active {
-    color: rgba(255, 255, 255, 0.3);
+    background: use.$color-light-pink;
   }
 }

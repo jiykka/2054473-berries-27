@@ -1,6 +1,6 @@
 @use "../global/use.scss";
 
-.main-nav {
+.nav {
   position: relative;
   z-index: 5;
 
@@ -8,7 +8,7 @@
     padding: 8px 87px 8px 26px;
     height: 52px;
 
-    // &--opened .main-nav__toggle {
+    // &--opened .nav__toggle {
     //   background-image: url("../img/svg/mob-menu-close.svg");
     //   width: 28px;
     //   height: 28px;
@@ -17,7 +17,7 @@
     //   margin: 15px;
     // }
 
-    // &--closed .main-nav__toggle {
+    // &--closed .nav__toggle {
     //   background-image: url("../img/svg/mob-menu-open.svg");
     //   width: 60px;
     //   height: 60px;
@@ -25,35 +25,35 @@
     //   top: 4px;
     // }
 
-    &--closed .main-nav__toggle-close {
+    &--closed .nav__toggle-close {
       display: none;
     }
 
-    &--closed .main-nav__toggle-open {
+    &--closed .nav__toggle-open {
       display: block;
     }
 
-    &--opened .main-nav__toggle-open {
+    &--opened .nav__toggle-open {
       display: none;
     }
 
-    &--opened .main-nav__toggle-close {
+    &--opened .nav__toggle-close {
       display: block;
     }
 
-    &--closed .main-nav__wrapper {
+    &--closed .nav__wrapper {
       display: none;
     }
 
-    &--opened .main-nav__wrapper {
+    &--opened .nav__wrapper {
       display: block;
     }
 
-    &--nojs .main-nav__toggle {
+    &--nojs .nav__toggle {
       display: none;
     }
 
-    &--nojs .main-nav__wrapper {
+    &--nojs .nav__wrapper {
       display: block;
       position: relative;
       top: 11px;
@@ -68,11 +68,11 @@
   }
 
   @include use.media-desktop {
-    padding: 24px 192px 24px 156px;
+    padding: 24px 192px 25px 156px;
   }
 }
 
-.main-nav__logo {
+.nav__logo {
   display: inline-block;
   position: relative;
   outline: none;
@@ -90,28 +90,28 @@
     column-gap: 10px;
   }
 
-  &:hover .main-nav__img-leaf,
-  &:hover > .main-nav__img-text {
+  &:hover .nav__img-leaf,
+  &:hover > .nav__img-text {
     fill: use.$color-ultragreen;
     color: use.$color-ultragreen;
   }
 
-  &:focus-visible .main-nav__img-leaf,
-  &:focus-visible .main-nav__img-text {
+  &:focus-visible .nav__img-leaf,
+  &:focus-visible .nav__img-text {
     fill: use.$color-aquamarine;
   }
 
-  &:active .main-nav__img-leaf,
-  &:active .main-nav__img-text {
+  &:active .nav__img-leaf,
+  &:active .nav__img-text {
     fill: use.$color-aquamarine;
   }
 }
 
-.main-nav__picture {
+.nav__picture {
   display: block;
 }
 
-.main-nav__img {
+.nav__img {
   display: block;
   position: relative;
 
@@ -126,11 +126,11 @@
   }
 }
 
-.main-nav__img-leaf {
+.nav__img-leaf {
   fill: use.$color-green;
 }
 
-.main-nav__img-text {
+.nav__img-text {
   display: none;
 
   @include use.media-tablet {
@@ -143,7 +143,7 @@
   }
 }
 
-.main-nav__text {
+.nav__text {
   display: block;
   position: absolute;
   top: 24px;
@@ -155,7 +155,7 @@
   }
 }
 
-.main-nav__toggle {
+.nav__toggle {
   position: absolute;
   border: none;
   background-color: transparent;
@@ -166,8 +166,6 @@
   z-index: 3;
   top: 4px;
   right: 21px;
-  // width: 60px;
-  // height: 60px;
   outline: none;
 
   // &::after {
@@ -179,13 +177,13 @@
   //   right: -15px;
   // }
 
-  &:hover .main-nav__toggle-open,
-  &:hover .main-nav__toggle-close {
+  &:hover .nav__toggle-open,
+  &:hover .nav__toggle-close {
     color: use.$color-ultragreen;
   }
 
-  &:focus-visible .main-nav__toggle-open,
-  &:focus-visible .main-nav__toggle-close {
+  &:focus-visible .nav__toggle-open,
+  &:focus-visible .nav__toggle-close {
     color: use.$color-ultragreen;
   }
 
@@ -198,18 +196,18 @@
   }
 }
 
-.main-nav__toggle-open {
+.nav__toggle-open {
   color: use.$color-green;
 }
 
-.main-nav__toggle-close {
+.nav__toggle-close {
   position: relative;
   right: -9px;
   top: 1px;
   color: use.$color-aquamarine;
 }
 
-.main-nav__wrapper {
+.nav__wrapper {
   position: absolute;
   z-index: 2;
   width: 100%;
@@ -230,7 +228,7 @@
   }
 }
 
-.main-nav__list {
+.nav__list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -267,7 +265,7 @@
   }
 }
 
-.main-nav__item {
+.nav__item {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -295,7 +293,7 @@
   }
 }
 
-.main-nav__link {
+.nav__link {
   @include use.font-raleway-20;
   font-size: 20.34px;
   line-height: 27px;
