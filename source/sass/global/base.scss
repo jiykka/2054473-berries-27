@@ -8,7 +8,7 @@ html {
 body {
   @include mixins.font-raleway-14;
   line-height: 24px;
-  background-color: variables.$color-white;
+  background-color: variables.$color-lite-white;
   margin: 0 auto;
   color: variables.$color-black;
   display: flex;

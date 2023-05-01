@@ -79,6 +79,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  background-color: use.$color-lite-white;
 
   @include use.media-tablet {
     row-gap: 52.5px;

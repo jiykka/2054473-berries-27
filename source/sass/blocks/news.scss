@@ -7,14 +7,17 @@
 
   @include use.media-mobile-only {
     padding-bottom: 64px;
+    margin-bottom: 119px;
   }
 
   @include use.media-tablet {
     padding-bottom: 110px;
+    margin-bottom: 115px;
   }
 
   @include use.media-desktop {
     padding-bottom: 99px;
+    margin-bottom: 143px;
   }
 
   &::before {
@@ -138,18 +141,6 @@
     @include use.media-desktop {
       left: 0;
     }
-  }
-
-  &:hover,
-  &:focus-visible {
-    border-color: use.$color-ultragreen;
-    outline: none;
-    box-shadow: 0 4px 4px rgba(88, 13, 101, 0.15);
-  }
-
-  &:active {
-    border-color: use.$color-aquamarine;
-    box-shadow: 0 6px 10px rgba(88, 13, 101, 0.15);
   }
 }
 

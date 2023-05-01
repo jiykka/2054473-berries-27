@@ -1,0 +1,252 @@
+@use "../global/use.scss";
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: use.$color-lite-aqua;
+
+  @include use.media-mobile-only {
+    padding: 11px 26px 12px;
+    row-gap: 9px;
+  }
+
+  @include use.media-tablet {
+    padding: 23px 17px 22px 21px;
+    align-items: center;
+  }
+
+  @include use.media-desktop {
+    padding: 25px 150px 24px 156px;
+  }
+}
+
+.footer__logo {
+  display: inline-block;
+  position: relative;
+  outline: none;
+
+  @include use.media-tablet {
+    height: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    width: 173px;
+  }
+
+  @include use.media-desktop {
+    column-gap: 10px;
+    width: 172px;
+  }
+
+  &:hover .footer__img-leaf,
+  &:hover .footer__img-text {
+    fill: use.$color-ultragreen;
+    color: use.$color-ultragreen;
+  }
+
+  &:focus-visible .footer__img-leaf,
+  &:focus-visible .footer__img-text {
+    fill: use.$color-aquamarine;
+  }
+
+  &:active .footer__img-leaf,
+  &:active .footer__img-text {
+    fill: use.$color-aquamarine;
+  }
+}
+
+.footer__img-text {
+  display: none;
+
+  @include use.media-tablet {
+    display: block;
+    width: 65px;
+    height: 36px;
+    position: relative;
+    top: 2px;
+    fill: use.$color-green;
+  }
+}
+
+// .footer__box {
+//   display: flex;
+//   flex-direction: column;
+
+//   @include use.media-mobile-only {
+//     row-gap: 29px;
+//   }
+
+//   @include use.media-tablet {
+//     flex-direction: row;
+//   }
+// }
+
+.footer__social {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  position: relative;
+
+  @include use.media-mobile-only {
+    column-gap: 20px;
+    top: 9px;
+  }
+
+  @include use.media-tablet {
+    column-gap: 32px;
+    right: 0;
+    top: 4px;
+  }
+
+  @include use.media-desktop {
+    right: 0;
+    top: 0;
+  }
+}
+
+.footer__social-item {
+  list-style: none;
+}
+
+.footer__social-link {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  border: 1px solid use.$color-green;
+  border-radius: 50%;
+
+  @include use.media-tablet {
+    width: 38px;
+    height: 38px;
+  }
+
+  &:hover,
+  &:focus-visible {
+    border-color: use.$color-ultragreen;
+    outline: none;
+  }
+
+  &:active {
+    border-color: use.$color-aquamarine;
+  }
+
+  &:hover .footer__social-ico,
+  &:focus-visible .footer__social-ico {
+    color: use.$color-ultragreen;
+  }
+
+  &:active .footer__social-ico {
+    color: use.$color-aquamarine;
+  }
+}
+
+.footer__social-ico {
+  display: block;
+  position: relative;
+  color: use.$color-green;
+
+  &--tg {
+    @include use.media-tablet {
+      width: 29px;
+      height: 29px;
+    }
+  }
+
+  &--vk {
+    @include use.media-mobile-only {
+      top: 3px;
+      left: 1px;
+    }
+
+    @include use.media-tablet {
+      width: 32px;
+      height: 32px;
+      top: 4px;
+      left: 2px;
+    }
+  }
+
+  &--youtube {
+    @include use.media-mobile-only {
+      top: -2px;
+      left: 1px;
+    }
+
+    @include use.media-tablet {
+      width: 28px;
+      height: 21px;
+      top: -3px;
+      left: 1px;
+    }
+  }
+}
+
+.footer__created-link-box {
+  display: flex;
+  column-gap: 8px;
+  justify-content: end;
+  align-items: center;
+  text-decoration: none;
+  color: use.$color-black;
+  position: relative;
+
+  @include use.media-mobile-only {
+    width: 100%;
+    right: -6px;
+  }
+
+  @include use.media-tablet {
+    top: 3px;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: use.$color-ultragreen;
+    outline: none;
+  }
+
+  &:active {
+    color: use.$color-aquamarine;
+  }
+}
+
+.footer__created-text {
+  display: block;
+  position: relative;
+
+  @include use.media-mobile-only {
+    @include use.font-raleway-11;
+    line-height: 13px;
+    top: -4px;
+  }
+
+  @include use.media-tablet {
+    @include use.font-raleway-16;
+    line-height: 19px;
+  }
+}
+
+.footer__created-ico {
+  display: block;
+  position: relative;
+
+  @include use.media-mobile-only {
+    width: 27px;
+    height: 32px;
+  }
+
+  @include use.media-tablet {
+    width: 36px;
+    height: 44px;
+    top: 5px;
+  }
+
+  @include use.media-desktop {
+    top: 4px;
+  }
+}

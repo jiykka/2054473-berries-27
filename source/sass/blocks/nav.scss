@@ -91,7 +91,7 @@
   }
 
   &:hover .nav__img-leaf,
-  &:hover > .nav__img-text {
+  &:hover .nav__img-text {
     fill: use.$color-ultragreen;
     color: use.$color-ultragreen;
   }
