@@ -228,6 +228,7 @@
   @include use.media-tablet {
     @include use.font-raleway-16;
     line-height: 19px;
+    top: -2px;
   }
 }
 

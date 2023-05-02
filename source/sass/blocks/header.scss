@@ -2,6 +2,7 @@
 
 .header {
   position: relative;
-  box-shadow: 0 4px 4px rgba(88, 13, 101, 0.25);
+  box-shadow: 0 4px 4px rgba(88, 13, 101, 0.5);
   background-color: use.$color-lite-aqua;
+  z-index: 1;
 }
