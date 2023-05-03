@@ -170,3 +170,13 @@
     }
   }
 }
+
+.delivery__btn {
+  @include use.media-mobile-only {
+    max-width: 90px;
+  }
+
+  @include use.media-tablet {
+    max-width: 126px;
+  }
+}

@@ -87,7 +87,9 @@
 }
 
 .news__box {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border: 2px solid use.$color-green;
   border-radius: 40px;
   padding: 31px 18px 69px;

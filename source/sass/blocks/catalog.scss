@@ -94,6 +94,7 @@
 .catalog__item {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   border-radius: 40px;
   box-shadow: 0 4px 4px rgba(88, 13, 101, 0.15);
   padding-bottom: 54px;
@@ -151,9 +152,11 @@
 .catalog__info-title {
   @include use.font-raleway-28;
   line-height: 33px;
-  margin: 0;
+  margin: 0 auto;
   position: relative;
   text-align: center;
+  max-width: 200px;
+
 
   &--position {
     letter-spacing: 0.5px;
@@ -181,6 +184,7 @@
   align-self: center;
   box-shadow: none;
   left: 2px;
+  max-width: 90px;
 
   @include use.media-tablet {
     @include use.font-raleway-20;

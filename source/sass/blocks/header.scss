@@ -2,7 +2,24 @@
 
 .header {
   position: relative;
-  box-shadow: 0 4px 4px rgba(88, 13, 101, 0.5);
   background-color: use.$color-lite-aqua;
   z-index: 1;
+
+  @include use.media-tablet {
+    box-shadow: 0 4px 4px rgba(88, 13, 101, 0.3);
+  }
+
+  @include use.media-desktop {
+    box-shadow: 0 8px 5px -5px rgba(88, 13, 101, 0.3);
+  }
+}
+
+.header--form {
+  @include use.media-tablet {
+    box-shadow: 0 5px 4px rgba(88, 13, 101, 0.5);
+  }
+
+  @include use.media-desktop {
+    box-shadow: 0 8px 5px -5px rgba(88, 13, 101, 0.5);
+  }
 }
